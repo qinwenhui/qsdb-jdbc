@@ -1,0 +1,28 @@
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# 运行时产物
+*.log
+hs_err_pid*
+
+# ---- 内部协作文档（本地保留，不进公开仓）----
+# 公开分支按 tools/internal/make_public_branch.sh 白名单生成，本节是
+# 双保险：即使在公开分支工作区也不可被 git add
+docs/
+tools/internal/
+QSDB_IT_*.env
+
