@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: mvn test (JDK ${{ matrix.java }})
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [8, 11, 17, 21]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      # 单元测试无需 server；集成测试由环境变量门控，CI 上自动跳过
+      - name: Test
+        run: mvn -B -q test
+
+      - name: Package
+        run: mvn -B -q package -DskipTests

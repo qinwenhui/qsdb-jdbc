@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.qinwh.qsdb</groupId>
+    <artifactId>qsdb-jdbc</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+
+    <name>qsdb-jdbc</name>
+    <description>QSDB official JDBC driver (Type 4, pure Java, zero dependencies)</description>
+    <url>https://github.com/qinwenhui/qsdb-jdbc</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>qinwenhui</id>
+            <name>qinwenhui</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <!-- Java 1.8 起步（业务微服务运行时）；JDBC 4.2 规范目标 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <junit.version>5.10.2</junit.version>
+    </properties>
+
+    <!-- 零第三方运行时依赖是硬约束（单 jar 进业务微服务）；
+         JSON 解析/HTTP 均为驱动内建（internal 包），设计文档 §十三。 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
